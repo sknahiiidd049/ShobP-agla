@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Console — সব পাগলা</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/jpeg" href="../assets/logo/logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body class="admin-body">
+    <!-- Admin Login Gate -->
+    <main id="admin-login-gate" class="admin-login-wrap">
+      <div class="card-surface admin-login-card">
+        <div class="admin-login-brand">
+          <img src="../assets/logo/logo.jpg" alt="সব পাগলা" class="brand-logo" />
+          <div>
+            <h1>🛡️ অ্যাডমিন কনসোল</h1>
+            <p>সব পাগলা — Nahid-এর কন্ট্রোল রুম</p>
+          </div>
+        </div>
+
+        <form id="admin-login-form" class="auth-form">
+          <label class="field-group">
+            <span class="field-label">অ্যাডমিন পাসওয়ার্ড</span>
+            <input
+              type="password"
+              name="password"
+              required
+              autocomplete="current-password"
+              placeholder="পাসওয়ার্ড লিখুন"
+              class="input-control"
+            />
+          </label>
+          <div id="admin-login-error" class="form-feedback feedback-error" hidden></div>
+          <button type="submit" class="btn btn-primary btn-block">🛡️ অ্যাডমিন প্রবেশ</button>
+        </form>
+
+        <div class="admin-login-footer">
+          <a href="../index.html" class="link-inline">← মূল ওয়েবসাইটে ফিরে যান</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Admin Dashboard Shell -->
+    <div id="admin-app-shell" class="admin-shell" hidden>
+      <aside class="admin-sidebar" aria-label="অ্যাডমিন নেভিগেশন">
+        <div class="admin-sidebar-brand">
+          <img src="../assets/logo/logo.jpg" alt="সব পাগলা" class="brand-logo" />
+          <span>সব পাগলা Admin</span>
+        </div>
+
+        <nav class="admin-nav">
+          <button type="button" class="admin-nav-btn admin-nav-active" data-admin-nav="dashboard">
+            📊 Dashboard
+          </button>
+          <button type="button" class="admin-nav-btn" data-admin-nav="users">
+            👥 Users
+          </button>
+          <button type="button" class="admin-nav-btn" data-admin-nav="photos">
+            📸 Photos
+          </button>
+          <button type="button" class="admin-nav-btn" data-admin-nav="pending">
+            ⏳ Pending Approval <span id="nav-pending-count" class="tabular-nums">0</span>
+          </button>
+          <button type="button" class="admin-nav-btn" data-admin-nav="blocked">
+            🚫 Blocked Users
+          </button>
+          <button type="button" class="admin-nav-btn" data-admin-nav="logs">
+            🕐 Activity Logs
+          </button>
+          <button type="button" class="admin-nav-btn" data-admin-nav="statistics">
+            📈 Statistics
+          </button>
+          <button type="button" class="admin-nav-btn" data-admin-nav="settings">
+            ⚙️ Settings
+          </button>
+        </nav>
+
+        <div class="admin-sidebar-footer">
+          <a href="../index.html" class="btn btn-secondary btn-sm btn-block">🏠 মূল সাইট</a>
+          <button type="button" id="admin-logout-btn" class="btn btn-danger btn-sm btn-block">
+            🚪 Admin Logout
+          </button>
+        </div>
+      </aside>
+
+      <div class="admin-workspace">
+        <header class="admin-topbar">
+          <div id="admin-breadcrumb" class="admin-breadcrumb">📊 Dashboard</div>
+          <div class="admin-topbar-actions">
+            <button type="button" id="admin-refresh-btn" class="btn btn-secondary btn-sm">
+              🔄 রিফ্রেশ
+            </button>
+          </div>
+        </header>
+
+        <div class="admin-content">
+          <!-- 1. DASHBOARD -->
+          <section data-admin-view="dashboard">
+            <div class="admin-kpi-grid">
+              <div class="kpi-card">
+                <span class="kpi-label">Total Users</span>
+                <strong id="kpi-total-users" class="kpi-val tabular-nums">0</strong>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">Total Photos</span>
+                <strong id="kpi-total-photos" class="kpi-val tabular-nums">0</strong>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">Approved Photos</span>
+                <strong id="kpi-approved-photos" class="kpi-val tabular-nums text-success">0</strong>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">Pending Photos</span>
+                <strong id="kpi-pending-photos" class="kpi-val tabular-nums text-warning">0</strong>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">Rejected Photos</span>
+                <strong id="kpi-rejected-photos" class="kpi-val tabular-nums text-danger">0</strong>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">Blocked Users</span>
+                <strong id="kpi-blocked-users" class="kpi-val tabular-nums text-danger">0</strong>
+              </div>
+            </div>
+
+            <div class="card-surface admin-panel-box">
+              <h2 class="section-subheading">সাম্প্রতিক অ্যাক্টিভিটি</h2>
+              <div id="admin-recent-activity" class="activity-list"></div>
+            </div>
+          </section>
+
+          <!-- 2. USERS -->
+          <section data-admin-view="users" hidden>
+            <div class="admin-section-toolbar">
+              <h2 class="section-subheading">ইউজার ম্যানেজমেন্ট</h2>
+              <input
+                type="search"
+                id="admin-user-search"
+                class="input-control search-input"
+                placeholder="নাম বা username দিয়ে খুঁজুন..."
+              />
+            </div>
+            <div class="table-wrap card-surface">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Joined Date</th>
+                    <th>Status</th>
+                    <th>Photo Count</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-users-tbody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- 3. PHOTOS -->
+          <section data-admin-view="photos" hidden>
+            <div class="admin-section-toolbar">
+              <h2 class="section-subheading">সব ছবির মডারেশন</h2>
+              <div class="segmented-tabs">
+                <button type="button" class="auth-tab tab-active" data-photo-filter="all">All</button>
+                <button type="button" class="auth-tab" data-photo-filter="pending">Pending</button>
+                <button type="button" class="auth-tab" data-photo-filter="approved">Approved</button>
+                <button type="button" class="auth-tab" data-photo-filter="rejected">Rejected</button>
+              </div>
+            </div>
+            <div id="admin-delete-confirm" data-armed="" hidden></div>
+            <div id="admin-photos-grid" class="admin-photos-grid"></div>
+          </section>
+
+          <!-- 4. PENDING APPROVAL -->
+          <section data-admin-view="pending" hidden>
+            <h2 class="section-subheading">⏳ অ্যাপ্রুভালের জন্য অপেক্ষমাণ ছবি</h2>
+            <div id="admin-pending-grid" class="admin-photos-grid"></div>
+          </section>
+
+          <!-- 5. BLOCKED USERS -->
+          <section data-admin-view="blocked" hidden>
+            <h2 class="section-subheading">🚫 ব্লকড ইউজার তালিকা</h2>
+            <div class="table-wrap card-surface">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Joined Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-blocked-tbody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- 6. ACTIVITY LOGS -->
+          <section data-admin-view="logs" hidden>
+            <div class="admin-section-toolbar">
+              <h2 class="section-subheading">🕐 সিস্টেম অ্যাক্টিভিটি লগ</h2>
+              <select id="logs-event-filter" class="input-control search-input">
+                <option value="all">সব ইভেন্ট</option>
+                <option value="registration">registration</option>
+                <option value="login">login</option>
+                <option value="logout">logout</option>
+                <option value="profile_update">profile_update</option>
+                <option value="photo_upload">photo_upload</option>
+                <option value="photo_approved">photo_approved</option>
+                <option value="photo_rejected">photo_rejected</option>
+                <option value="photo_deleted">photo_deleted</option>
+                <option value="user_blocked">user_blocked</option>
+                <option value="admin_login">admin_login</option>
+              </select>
+            </div>
+            <p class="helper-note">
+              প্রাইভেসি নোটিশ: ব্রাউজার-ওনলি GitHub Pages থেকে ভুয়া IP তৈরি করা হয় না। সার্ভার-সাইড IP শুধুমাত্র Supabase Edge Function সক্রিয় থাকলে সংগ্রহ করা হয়।
+            </p>
+            <div class="table-wrap card-surface">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>User</th>
+                    <th>Event</th>
+                    <th>User-Agent</th>
+                    <th>Referrer</th>
+                    <th>Server IP</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-logs-tbody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- 7. STATISTICS -->
+          <section data-admin-view="statistics" hidden>
+            <div class="admin-stats-columns">
+              <div class="card-surface admin-panel-box">
+                <h2 class="section-subheading">ছবির স্ট্যাটাস অনুপাত</h2>
+                <div id="stats-photo-bars"></div>
+              </div>
+              <div class="card-surface admin-panel-box">
+                <h2 class="section-subheading">সক্রিয় ফটোগ্রাফার (Top Uploaders)</h2>
+                <div id="stats-top-uploaders" class="activity-list"></div>
+              </div>
+            </div>
+            <div class="card-surface admin-panel-box">
+              <h2 class="section-subheading">ইভেন্ট ব্রেকডাউন</h2>
+              <div id="stats-events-summary"></div>
+            </div>
+          </section>
+
+          <!-- 8. SETTINGS -->
+          <section data-admin-view="settings" hidden>
+            <div class="admin-stats-columns">
+              <form id="admin-settings-form" class="card-surface admin-panel-box">
+                <h2 class="section-subheading">ওয়েবসাইট সেটিংস</h2>
+                <label class="field-group">
+                  <span class="field-label">Website Name</span>
+                  <input type="text" name="site_name" required maxlength="60" class="input-control" />
+                </label>
+                <label class="field-group">
+                  <span class="field-label">Tagline</span>
+                  <input type="text" name="tagline" required maxlength="120" class="input-control" />
+                </label>
+                <div class="form-grid">
+                  <label class="field-group">
+                    <span class="field-label">Gallery Page Size (4–48)</span>
+                    <input type="number" name="gallery_page_size" min="4" max="48" required class="input-control" />
+                  </label>
+                  <label class="field-group">
+                    <span class="field-label">Max Upload MB (1–8)</span>
+                    <input type="number" name="max_upload_mb" min="1" max="8" required class="input-control" />
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary">💾 সেটিংস সেভ করুন</button>
+              </form>
+
+              <form id="admin-password-form" class="card-surface admin-panel-box">
+                <h2 class="section-subheading">🔐 অ্যাডমিন পাসওয়ার্ড পরিবর্তন</h2>
+                <label class="field-group">
+                  <span class="field-label">পুরনো পাসওয়ার্ড</span>
+                  <input type="password" name="old_password" required class="input-control" />
+                </label>
+                <label class="field-group">
+                  <span class="field-label">নতুন পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)</span>
+                  <input type="password" name="new_password" required minlength="6" class="input-control" />
+                </label>
+                <label class="field-group">
+                  <span class="field-label">নতুন পাসওয়ার্ড নিশ্চিত করুন</span>
+                  <input type="password" name="confirm_password" required minlength="6" class="input-control" />
+                </label>
+                <div id="admin-password-feedback" class="form-feedback" hidden></div>
+                <button type="submit" class="btn btn-accent">🔑 পাসওয়ার্ড আপডেট করুন</button>
+              </form>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin User View Modal -->
+    <div id="admin-user-modal" class="modal-backdrop" hidden role="dialog" aria-modal="true">
+      <div class="card-surface admin-modal-card">
+        <button type="button" id="admin-user-modal-close" class="lightbox-close" aria-label="বন্ধ করুন">
+          ✕
+        </button>
+        <div id="admin-user-modal-body" class="admin-user-modal-body"></div>
+      </div>
+    </div>
+
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+    <script type="module" src="../js/admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>সব পাগলা — পাগলের দুনিয়া 😂</title>
+    <meta
+      name="description"
+      content="সব পাগলা — বন্ধুদের মজার ছবি, ফানি ক্যাপশন এবং আড্ডাবাজির কমিউনিটি ওয়েবসাইট। বন্ধুত্ব সিরিয়াস হতে পারে, কিন্তু আমরা কখনোই না!"
+    />
+    <meta property="og:title" content="সব পাগলা — পাগলের দুনিয়া 😂" />
+    <meta
+      property="og:description"
+      content="বন্ধুদের ফানি গ্যালারি, প্রোফাইল এবং পাগলামির দুনিয়া।"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/jpeg" href="./assets/logo/logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">মূল কন্টেন্টে যান</a>
+
+    <!-- Top Navigation Bar (Clean 3-Zone Contract) -->
+    <header class="site-header">
+      <div class="header-inner">
+        <!-- Zone 1: Single-line Brand Wordmark (also Secret Admin Click Trigger) -->
+        <button
+          type="button"
+          id="brand-secret-trigger"
+          class="brand-mark"
+          title="সব পাগলা"
+          aria-label="সব পাগলা হোম"
+        >
+          <img src="./assets/logo/logo.jpg" alt="সব পাগলা লোগো" class="brand-logo" />
+          <span class="brand-title" data-site-name>সব পাগলা</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          type="button"
+          id="mobile-menu-toggle"
+          class="mobile-menu-btn"
+          aria-label="মেনু খুলুন"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          ☰
+        </button>
+
+        <!-- Zone 2: Primary Navigation Links -->
+        <nav id="primary-nav" class="primary-nav" aria-label="প্রধান নেভিগেশন">
+          <button type="button" class="nav-link nav-active" data-nav-target="home">Home</button>
+          <button type="button" class="nav-link" data-nav-target="gallery">Funny Gallery</button>
+          <button type="button" class="nav-link" data-nav-target="friends">Friends</button>
+          <button type="button" class="nav-link" data-nav-target="upload">Upload</button>
+          <button type="button" id="nav-profile-btn" class="nav-link" data-nav-target="profile" hidden>
+            Profile
+          </button>
+        </nav>
+
+        <!-- Zone 3: Primary Action -->
+        <div class="header-actions">
+          <div id="nav-guest-actions">
+            <button type="button" class="btn btn-primary btn-sm" data-nav-target="auth">
+              Login / Register
+            </button>
+          </div>
+          <div id="nav-user-actions" class="user-action-group" hidden>
+            <button
+              type="button"
+              id="nav-username-label"
+              class="btn btn-secondary btn-sm"
+              data-nav-target="profile"
+            >
+              👤 user
+            </button>
+            <button type="button" id="nav-logout-btn" class="btn btn-ghost btn-sm">Logout</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="main-container">
+      <!-- HOME SECTION -->
+      <section data-section-view="home" aria-label="হোমপেজ">
+        <div class="hero-split">
+          <div class="hero-copy">
+            <p class="hero-tagline" data-site-tagline>পাগলের দুনিয়া 😂</p>
+            <h1 class="hero-headline">
+              😂 <span data-site-name>সব পাগলা</span>
+            </h1>
+            <p class="hero-subtext">
+              বন্ধুত্ব সিরিয়াস হতে পারে,<br />
+              কিন্তু আমরা কখনোই না! 🤣
+            </p>
+            <div class="hero-cta-grid">
+              <button type="button" class="btn btn-primary" data-nav-target="gallery">
+                🤣 ফানি গ্যালারি
+              </button>
+              <button type="button" class="btn btn-accent" data-nav-target="upload">
+                📸 ছবি আপলোড
+              </button>
+              <button type="button" class="btn btn-secondary" data-nav-target="friends">
+                👥 আমাদের পাগলারা
+              </button>
+              <button type="button" id="hero-random-friend-btn" class="btn btn-teal">
+                🎲 Random Friend
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-visual-frame">
+            <img
+              src="./assets/logo/hero-squad.jpg"
+              alt="সব পাগলা বন্ধুদের হাসিখুশি সেলফি ইলাস্ট্রেশন"
+              class="hero-visual-img"
+            />
+          </div>
+        </div>
+
+        <!-- Funny Stats Bar -->
+        <div class="stats-strip" aria-label="পাগলাদের পরিসংখ্যান">
+          <div class="stat-tile stat-yellow">
+            <span class="stat-value tabular-nums" id="stat-total-friends">0</span>
+            <span class="stat-label">Total পাগলা</span>
+          </div>
+          <div class="stat-tile stat-coral">
+            <span class="stat-value tabular-nums" id="stat-approved-photos">0</span>
+            <span class="stat-label">Total Funny Photos</span>
+          </div>
+          <div class="stat-tile stat-teal">
+            <span class="stat-value tabular-nums" id="stat-pending-photos">0</span>
+            <span class="stat-label">Pending Photos</span>
+          </div>
+        </div>
+
+        <!-- Random Funny Quote Card -->
+        <section class="quote-banner" aria-label="আজকের ফানি বাণী">
+          <div class="quote-content">
+            <p class="quote-kicker">আজকের পাগলা বাণী</p>
+            <blockquote id="funny-quote-text" class="quote-text">
+              "আমরা বন্ধু না, আমরা একে অপরের সমস্যা। 😂"
+            </blockquote>
+          </div>
+          <button type="button" id="new-quote-btn" class="btn btn-secondary">
+            🎲 আরেকটা বাণী দাও
+          </button>
+        </section>
+      </section>
+
+      <!-- FUNNY GALLERY SECTION -->
+      <section data-section-view="gallery" hidden aria-label="ফানি গ্যালারি">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">🤣 ফানি গ্যালারি</h2>
+            <p class="section-subtitle">অ্যাডমিন অ্যাপ্রুভড বন্ধুদের সেরা পাগলাটে মুহূর্ত</p>
+          </div>
+          <button type="button" class="btn btn-accent" data-nav-target="upload">
+            📸 নতুন ছবি দাও
+          </button>
+        </div>
+
+        <div id="gallery-loading" class="loading-state" hidden>ছবি লোড হচ্ছে... ⏳</div>
+        <div id="gallery-error" class="form-feedback feedback-error" hidden></div>
+        <div id="gallery-empty" class="empty-state" hidden>
+          <p>এখনও কোনো পাগলাটে ছবি নেই। প্রথমে তুমিই শুরু করো! 😂</p>
+          <button type="button" class="btn btn-primary" data-nav-target="upload">
+            📸 প্রথম ছবি আপলোড করো
+          </button>
+        </div>
+
+        <div id="gallery-grid" class="gallery-grid"></div>
+
+        <div class="pagination-wrap">
+          <button type="button" id="gallery-load-more" class="btn btn-secondary" hidden>
+            আরও মজার ছবি দেখো 👇
+          </button>
+        </div>
+      </section>
+
+      <!-- FRIENDS DIRECTORY SECTION -->
+      <section data-section-view="friends" hidden aria-label="আমাদের পাগলারা">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">👥 আমাদের পাগলারা</h2>
+            <p class="section-subtitle">দলের সব নিবন্ধিত বন্ধুদের প্রোফাইল</p>
+          </div>
+          <div class="friends-toolbar">
+            <input
+              type="search"
+              id="friends-search-input"
+              class="input-control search-input"
+              placeholder="নাম বা username খুঁজো..."
+              aria-label="বন্ধু খুঁজুন"
+            />
+            <button type="button" id="friends-random-btn" class="btn btn-teal">
+              🎲 Random Friend
+            </button>
+          </div>
+        </div>
+
+        <div id="friends-loading" class="loading-state" hidden>পাগলাদের তালিকা আসছে... ⏳</div>
+        <div id="friends-empty" class="empty-state" hidden></div>
+        <div id="friends-grid" class="friends-grid"></div>
+      </section>
+
+      <!-- PHOTO UPLOAD SECTION -->
+      <section data-section-view="upload" hidden aria-label="ছবি আপলোড">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">📸 ফানি ছবি আপলোড</h2>
+            <p class="section-subtitle">মজার ক্যাপশনসহ বন্ধুদের হাসির খোরাক শেয়ার করো</p>
+          </div>
+        </div>
+
+        <div id="upload-auth-notice" class="card-surface auth-gate-card" hidden>
+          <h3>ছবি আপলোড করতে লগইন প্রয়োজন 🔐</h3>
+          <p>তুমি এখনও লগইন করোনি! দলের সদস্য হিসেবে লগইন বা রেজিস্টার করে ছবি দাও।</p>
+          <button type="button" class="btn btn-primary" data-nav-target="auth">
+            🔓 Login / Register করো
+          </button>
+        </div>
+
+        <form id="upload-form" class="card-surface upload-card">
+          <label id="upload-dropzone" class="dropzone" for="upload-file-input">
+            <span class="dropzone-icon">🖼️</span>
+            <span class="dropzone-title">এখানে ছবি ক্লিক বা ড্র্যাগ করে দাও</span>
+            <span id="upload-limit-hint" class="dropzone-hint">
+              সাপোর্টেড: JPG, JPEG, PNG, WEBP (সর্বোচ্চ 8MB)
+            </span>
+            <input
+              type="file"
+              id="upload-file-input"
+              accept="image/jpeg,image/png,image/webp"
+              class="sr-only"
+            />
+          </label>
+
+          <div id="upload-preview-wrap" class="upload-preview-wrap" hidden>
+            <img id="upload-preview-img" src="" alt="আপলোড প্রিভিউ" class="upload-preview-img" />
+            <button type="button" id="upload-clear-file" class="btn btn-xs btn-danger">
+              ✕ ছবি সরাও
+            </button>
+          </div>
+
+          <label class="field-group">
+            <span class="field-label">মজার ক্যাপশন (ঐচ্ছিক, সর্বোচ্চ ৩০০ অক্ষর)</span>
+            <textarea
+              id="upload-caption"
+              rows="3"
+              maxlength="300"
+              class="input-control"
+              placeholder="যেমন: পরীক্ষার আগের রাতের চেহারা বনাম পরীক্ষার হলের চেহারা 😂"
+            ></textarea>
+          </label>
+
+          <div id="upload-status" class="form-feedback" hidden></div>
+
+          <button type="submit" id="upload-submit-btn" class="btn btn-primary btn-block">
+            📸 পাগলামি আপলোড করো
+          </button>
+          <p class="helper-note">
+            নিরাপত্তার স্বার্থে আপলোডের পর ছবি পেন্ডিং থাকবে এবং অ্যাডমিন অ্যাপ্রুভ করলেই গ্যালারিতে দেখা যাবে।
+          </p>
+        </form>
+      </section>
+
+      <!-- PROFILE SECTION -->
+      <section data-section-view="profile" hidden aria-label="প্রোফাইল">
+        <div id="profile-guest-notice" class="card-surface auth-gate-card" hidden>
+          <h3>নিজের প্রোফাইল দেখতে লগইন করো 👤</h3>
+          <p>অ্যাকাউন্টে প্রবেশ করলে তোমার ছবি, বায়ো ও স্ট্যাটাস দেখতে পারবে।</p>
+          <button type="button" class="btn btn-primary" data-nav-target="auth">
+            🔓 Login / Register
+          </button>
+        </div>
+        <div id="profile-view-content"></div>
+      </section>
+
+      <!-- LOGIN / REGISTER SECTION -->
+      <section data-section-view="auth" hidden aria-label="লগইন ও রেজিস্ট্রেশন">
+        <div class="auth-container card-surface">
+          <div class="auth-tabs" role="tablist">
+            <button type="button" id="auth-tab-login" class="auth-tab tab-active" role="tab">
+              🔓 লগইন
+            </button>
+            <button type="button" id="auth-tab-register" class="auth-tab" role="tab">
+              🚀 নতুন অ্যাকাউন্ট
+            </button>
+          </div>
+
+          <div id="auth-feedback" class="form-feedback" hidden></div>
+
+          <!-- Login Form (Username + Password only) -->
+          <form id="login-form" class="auth-form">
+            <h2 class="form-title">পাগলা দলে লগইন করো</h2>
+            <label class="field-group">
+              <span class="field-label">Username</span>
+              <input
+                type="text"
+                name="username"
+                required
+                autocomplete="username"
+                placeholder="যেমন: nahid_01"
+                class="input-control"
+              />
+            </label>
+            <label class="field-group">
+              <span class="field-label">Password</span>
+              <input
+                type="password"
+                name="password"
+                required
+                autocomplete="current-password"
+                placeholder="••••••"
+                class="input-control"
+              />
+            </label>
+            <button type="submit" class="btn btn-primary btn-block">🔓 লগইন করো</button>
+          </form>
+
+          <!-- Registration Form (No Email required!) -->
+          <form id="register-form" class="auth-form" hidden>
+            <h2 class="form-title">নতুন পাগলা রেজিস্ট্রেশন</h2>
+            <label class="field-group">
+              <span class="field-label">তোমার নাম *</span>
+              <input
+                type="text"
+                name="display_name"
+                required
+                maxlength="60"
+                placeholder="যেমন: নাহিদ হাসান"
+                class="input-control"
+              />
+            </label>
+            <label class="field-group">
+              <span class="field-label">Username * (৩–২০ অক্ষর, শুধু a-z, 0-9, _)</span>
+              <input
+                type="text"
+                name="username"
+                required
+                minlength="3"
+                maxlength="20"
+                pattern="[a-zA-Z0-9_]{3,20}"
+                autocomplete="username"
+                placeholder="যেমন: pagla_nahid"
+                class="input-control"
+              />
+            </label>
+            <label class="field-group">
+              <span class="field-label">Password * (কমপক্ষে ৬ অক্ষর)</span>
+              <input
+                type="password"
+                name="password"
+                required
+                minlength="6"
+                autocomplete="new-password"
+                placeholder="কমপক্ষে ৬ অক্ষরের পাসওয়ার্ড"
+                class="input-control"
+              />
+            </label>
+            <label class="field-group">
+              <span class="field-label">বায়ো (ঐচ্ছিক)</span>
+              <textarea
+                name="bio"
+                rows="2"
+                maxlength="240"
+                placeholder="নিজের সম্পর্কে এক লাইন পাগলামি..."
+                class="input-control"
+              ></textarea>
+            </label>
+            <label class="field-group">
+              <span class="field-label">প্রোফাইল ছবি (ঐচ্ছিক, JPG/PNG/WEBP, সর্বোচ্চ 8MB)</span>
+              <input
+                type="file"
+                name="avatar"
+                accept="image/jpeg,image/png,image/webp"
+                class="input-control"
+              />
+            </label>
+            <button type="submit" class="btn btn-accent btn-block">🚀 পাগলা দলে যোগ দাও</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-label="ছবির বিস্তারিত">
+      <div class="lightbox-dialog">
+        <button type="button" id="lightbox-close" class="lightbox-close" aria-label="বন্ধ করুন">
+          ✕
+        </button>
+        <img id="lightbox-img" src="" alt="" class="lightbox-img" />
+        <div class="lightbox-caption-bar">
+          <p id="lightbox-caption" class="lightbox-caption"></p>
+          <p class="lightbox-meta">
+            <button type="button" id="lightbox-author" class="link-inline"></button>
+            <span aria-hidden="true"> · </span>
+            <span id="lightbox-date"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-brand">
+          <strong data-site-name>সব পাগলা</strong> · <span data-site-tagline>পাগলের দুনিয়া 😂</span>
+        </p>
+        <p class="footer-privacy">
+          প্রাইভেসি নোটিশ: নিরাপত্তার জন্য লগইন, আপলোড ও অ্যাডমিন মডারেশনের মৌলিক অ্যাক্টিভিটি লগ সংরক্ষণ করা হয়। কোনো ব্যক্তিগত ডেটা বিক্রি বা অপ্রয়োজনীয়ভাবে প্রকাশ করা হয় না।
+        </p>
+      </div>
+    </footer>
+
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
